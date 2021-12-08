@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="world_name" value="$(find fusionopolis_gz_world)/worlds/i2r_lvl9.world"/>
+
+  <include file="$(find fusionopolis_gz_world)/launch/i2r_lvl9.launch">
+    <!-- <arg name="world_name" value="$(arg world_name)"/> -->
+  </include>
+
+  <include file="$(find p3dx_gazebo)/launch/spawn_p3dx_wo_ns.launch">
+    <!-- <arg name="laser_enabled" value="$(arg laser_enabled)"/> -->
+    <!-- <arg name="kinect_enabled" value="$(arg kinect_enabled)"/> -->
+    <arg name="x" value="22.0"/>
+    <arg name="y" value="-36.4"/>
+    <arg name="z" value="0.5"/>
+    <arg name="yaw" value="0.33"/>
+  </include>
+
+</launch>
