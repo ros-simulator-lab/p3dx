@@ -4,7 +4,7 @@
   <arg name="robot_namespace" default="$(optenv ROBOT_NAMESPACE)"/>
 
   <arg name="config_extras"
-       default="$(eval optenv('P3DX_CONFIG_EXTRAS', find('p3dx_control') + '/config/empty.yaml'))"/>
+       default="$(eval optenv('P3DX_CONFIG_EXTRAS', find('p3dx_control') + '/config_wo_ns/empty.yaml'))"/>
 
   <!-- <arg name="laser_enabled" default="$(optenv P3DX_LMS1XX_ENABLED false)"/> -->
   <!-- <arg name="kinect_enabled" default="$(optenv P3DX_KINECT_ENABLED false)"/> -->
@@ -19,7 +19,7 @@
   </include>
 
   <!-- Load controller configuration -->
-  <rosparam command="load" file="$(find p3dx_control)/config/control.yaml"/>
+  <rosparam command="load" file="$(find p3dx_control)/config_wo_ns/control.yaml"/>
   <param name="RosAria/base_frame_id" value="base_link"/>
   <param name="RosAria/odom_frame_id" value="odom"/>
   
@@ -30,9 +30,9 @@
       </node>
 
   <!-- Start EKF for localization -->
-  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
-    <rosparam command="load" file="$(find p3dx_control)/config/localization.yaml" subst_value="True"/>
-  </node> -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+    <rosparam command="load" file="$(find p3dx_control)/config_wo_ns/localization.yaml" />
+  </node>
 
   <!-- Interactive marker to drive robot in RViz -->
   <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen">
@@ -46,7 +46,7 @@
 
   <!-- Multiple input velocity with priority -->
   <node pkg="twist_mux" type="twist_mux" name="twist_mux">
-    <rosparam command="load" file="$(find p3dx_control)/config/twist_mux.yaml" />
+    <rosparam command="load" file="$(find p3dx_control)/config_wo_ns/twist_mux.yaml" />
     <remap from="cmd_vel_out" to="RosAria/cmd_vel"/>
   </node>
 
