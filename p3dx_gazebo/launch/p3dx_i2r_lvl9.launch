@@ -3,9 +3,11 @@
 <launch>
 
   <arg name="world_name" value="$(find fusionopolis_gz_world)/worlds/i2r_lvl9.world"/>
+  <arg name="gui" default="true"/>
 
   <include file="$(find fusionopolis_gz_world)/launch/i2r_lvl9.launch">
     <!-- <arg name="world_name" value="$(arg world_name)"/> -->
+    <arg name="gui" value="$(arg gui)"/>
   </include>
 
   <include file="$(find p3dx_gazebo)/launch/spawn_p3dx_wo_ns.launch">
