@@ -1,7 +1,7 @@
 # Robot Related and Other Params
 # ==============================
 # url: http://wiki.ros.org/costmap_2d/layered
-robot_radius: 0.3
+robot_radius: 0.2
 # footprint: [[-0.5, -0.33], [-0.5, 0.33], [0.5, 0.33], [0.5, -0.33]]
 robot_base_frame: base_link
 
@@ -40,6 +40,13 @@ obstacle_layer:
 # url: http://wiki.ros.org/costmap_2d/hydro/staticmap
 static_layer:
     map_topic: /map
+
+
+# Static Layer 2 Params
+slam_layer:
+    map_topic: /carto_map
+    use_slam_map: true
+    track_unknown_space: false
 
 
 # Sonar Layer Params
