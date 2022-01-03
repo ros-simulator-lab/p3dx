@@ -47,6 +47,7 @@ slam_layer:
     map_topic: /carto_map
     use_slam_map: true
     track_unknown_space: false
+    debug: true
 
 
 # Sonar Layer Params

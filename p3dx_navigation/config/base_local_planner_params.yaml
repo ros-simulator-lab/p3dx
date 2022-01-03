@@ -84,7 +84,7 @@ EBandPlannerROS:
 
   # recursive approximation of bubble equilibrium position based
   eband_equilibrium_approx_max_recursion_depth: 3
-  eband_equilibrium_relative_overshoot: 0.8
+  eband_equilibrium_relative_overshoot: 0.3
   eband_significant_force_lower_bound: 0.15
 
 # Eband reference from isera2

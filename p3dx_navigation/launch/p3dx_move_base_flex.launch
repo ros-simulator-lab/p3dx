@@ -26,6 +26,6 @@
     <!-- Relays old move_base actions to the new mbf move_base action, similar but with richer result and feedback.
     Also relay the simple goal topic published by RViz, the make_plan service and dynamic reconfiguration
     calls (note that some parameters have changed names; see http://wiki.ros.org/move_base_flex for details) -->
-    <!-- <node name="move_base_legacy_relay" pkg="mbf_costmap_nav" type="move_base_legacy_relay.py"/> -->
+    <node name="move_base_legacy_relay" pkg="p3dx_navigation" type="move_base_legacy_relay.py"/>
 
 </launch>
