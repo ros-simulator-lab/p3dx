@@ -1,5 +1,5 @@
 global_costmap:
-    global_frame: map
+    global_frame: pioneer_a/map
     update_frequency: 1.5       # Global Costmap can be updated at a slower frequency
     publish_frequency: 1.0      # Global Costmap can be updated at a slower frequency
     static_map: true

@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
-
+  <arg name="robot_name" default=""/>
+  <arg name="viz_name" value="robot"/>
+  <arg name="viz_file" value="$(arg viz_name).rviz" if="$(eval robot_name=='')"/>
+  <arg name="viz_file" value="$(arg viz_name)_$(arg robot_name).rviz" unless="$(eval robot_name=='')"/>
   <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />  -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find p3dx_viz)/rviz/robot.rviz" output="screen"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find p3dx_viz)/rviz/$(arg viz_file) " output="screen"/>
 
 </launch>
