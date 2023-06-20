@@ -1,6 +1,8 @@
-global_frame: pioneer_a/odom
+global_frame: $(arg robot_namespace)odom
 rolling_window: true
 track_unknown_space: true
+inflation:
+    inflation_radius: 1
 
 plugins:
   - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}

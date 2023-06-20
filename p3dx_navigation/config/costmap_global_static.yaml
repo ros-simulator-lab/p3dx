@@ -1,6 +1,8 @@
-global_frame: pioneer_a/map
+global_frame: $(arg robot_namespace)map
 rolling_window: false
-track_unknown_space: true
+track_unknown_space: false
+inflation:
+    inflation_radius: 1
 
 plugins:
   - {name: static,                  type: "costmap_2d::StaticLayer"}

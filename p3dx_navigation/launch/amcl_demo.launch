@@ -6,21 +6,22 @@
   <arg name="use_acml" default="false"/>
 
   <!-- Run the map server -->
-  <param name="frame_id" value="map"/>
+  <param name="frame_id" value="$(arg robot_namespace)map"/>
   <arg name="map_file" default="mirale_gazebo"/>
   <arg name="scan_topic" default="$(eval optenv('P3DX_LASER_TOPIC', 'scan'))" />
-  <group ns="pioneer_a">
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find p3dx_navigation)/maps/$(arg map_file).yaml" >
-      <param name="frame_id" value="pioneer_a/map"/>"    
+  <arg name="robot_namespace" default=""/>
+  <group ns="$(arg robot_namespace)">
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find p3dx_navigation)/maps/$(arg map_file).yaml">
+      <param name="frame_id" value="$(arg robot_namespace)map"/>"    
     </node>
 
   <!--- Run AMCL -->
-    <include if="$(arg use_acml)" file="$(find p3dx_navigation)/launch/amcl.launch">
+    <include if="$(arg use_acml)" file="$(find p3dx_navigation)/launch/amcl.launch" pass_all_args="true">
       <arg name="scan_topic" value="$(arg scan_topic)" />
     </include>
 
   <!--- Run Move Base -->
-    <include if="$(eval use_mbf == false)" file="$(find p3dx_navigation)/launch/move_base.launch" />
-    <include if="$(eval use_mbf == true)" file="$(find p3dx_navigation)/launch/move_base_flex.launch" />
+    <include if="$(eval use_mbf == false)" file="$(find p3dx_navigation)/launch/move_base.launch" pass_all_args="true"/>
+    <include if="$(eval use_mbf == true)" file="$(find p3dx_navigation)/launch/move_base_flex.launch" pass_all_args="true"/>
   </group>
 </launch>

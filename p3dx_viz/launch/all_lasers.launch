@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="no_static_map" default="true "/>
+<arg name="scenario" default="office"/>
+<arg name="viz_file" default="$(arg scenario)_viz.rviz"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find p3dx_navigation)/maps/$(arg scenario).yaml">
+      <param name="frame_id" value="map"/>"    
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="world_to_map"
+      args="0 0 0 0 0 0 world map 100" />
+
+
+  <node pkg="move_base" type="move_base" respawn="false" name="all_lasers" output="screen">
+    <!-- observation sources located in costmap_common.yaml -->
+    <rosparam file="$(find p3dx_viz)/config/costmap_common.yaml" command="load" ns="global_costmap" subst_value="true"/>
+    <rosparam file="$(find p3dx_viz)/config/costmap_common.yaml" command="load" ns="local_costmap" subst_value="true"/>
+
+    <!-- local costmap, needs size -->
+    <rosparam file="$(find p3dx_viz)/config/costmap_local.yaml" command="load" ns="local_costmap" subst_value="true"/>
+    <param name="local_costmap/width" value="10.0"/>
+    <param name="local_costmap/height" value="10.0"/>
+
+    <!-- static global costmap, static map provides size -->
+    <rosparam file="$(find p3dx_viz)/config/costmap_global_static.yaml" command="load" ns="global_costmap" unless="$(arg no_static_map)" subst_value="true"/>
+    
+    <!-- global costmap with laser, for odom_navigation_demo -->
+    <rosparam file="$(find p3dx_viz)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" if="$(arg no_static_map)" subst_value="true"/>
+    <param name="global_costmap/width" value="100.0" if="$(arg no_static_map)"/>
+    <param name="global_costmap/height" value="100.0" if="$(arg no_static_map)"/>
+  </node>
+  <node name="rviz_view_all" pkg="rviz" type="rviz" args="-d $(find p3dx_viz)/rviz/$(arg viz_file) " output="screen"/>
+
+</launch>

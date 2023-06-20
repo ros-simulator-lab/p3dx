@@ -1,0 +1,28 @@
+# footprint: [[-0.23, -0.19], [-0.23, 0.19], [0.23, 0.19], [0.23, -0.19]]
+# footprint_padding: 0.01
+robot_base_frame: world
+robot_radius: 0
+update_frequency: 1.0
+publish_frequency: 1.0
+transform_tolerance: 0.5
+
+resolution: 1
+
+obstacle_range: 0.1
+raytrace_range: 20.0
+track_unknown_space: true
+
+#layer definitions
+static:
+    subscribe_to_updates: true
+
+obstacles_laser:
+    observation_sources: laser1 laser2 laser3 #laser4
+    laser1: {data_type: LaserScan, clearing: true, marking: true, topic: pioneer_1/scan, inf_is_valid: true}
+    laser2: {data_type: LaserScan, clearing: true, marking: true, topic: pioneer_2/scan, inf_is_valid: true}
+    laser3: {data_type: LaserScan, clearing: true, marking: true, topic: pioneer_3/scan, inf_is_valid: true}
+    # laser4: {data_type: LaserScan, clearing: true, marking: true, topic: pioneer_4/scan, inf_is_valid: true}
+    # laser5: {data_type: LaserScan, clearing: true, marking: true, topic: pioneer_5/scan, inf_is_valid: true}
+
+inflation:
+    inflation_radius: 0
