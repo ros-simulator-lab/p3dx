@@ -74,7 +74,7 @@ TebLocalPlannerROS:
   min_turning_radius: 0.0
   footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
     type: "circular"
-    radius: 0.22 # for type "circular"
+    radius: 0.23 # for type "circular"
     # line_start: [-0.3, 0.0] # for type "line"
     # line_end: [0.3, 0.0] # for type "line"
     # front_offset: 0.2 # for type "two_circles"
@@ -91,21 +91,21 @@ TebLocalPlannerROS:
     
   # Obstacles
     
-  min_obstacle_dist: 0.05
+  min_obstacle_dist: 0.1
   include_costmap_obstacles: True
   costmap_obstacles_behind_robot_dist: 0.2
   obstacle_poses_affected: 30
   costmap_converter_plugin: ""
   costmap_converter_spin_thread: True
-  costmap_converter_rate: 5
-  inflation_dist: 0.05
+  costmap_converter_rate: 10
+  inflation_dist: 0.1
   # Optimization
     
   no_inner_iterations: 5
   no_outer_iterations: 4
   optimization_activate: True
   optimization_verbose: False
-  penalty_epsilon: 0.01
+  penalty_epsilon: 0.08
   weight_max_vel_x: 1
   weight_max_vel_theta: 1
   weight_acc_lim_x: 0.5
