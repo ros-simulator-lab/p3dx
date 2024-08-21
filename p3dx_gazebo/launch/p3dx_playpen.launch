@@ -17,9 +17,9 @@
   <include file="$(find p3dx_gazebo)/launch/spawn_p3dx_wo_ns.launch">
     <!-- <arg name="laser_enabled" value="$(arg laser_enabled)"/> -->
     <!-- <arg name="kinect_enabled" value="$(arg kinect_enabled)"/> -->
-    <arg name="x" value="0.0"/>
-    <arg name="y" value="0.0"/>
-    <arg name="z" value="0.0"/>
+    <arg name="x" value="3.8"/>
+    <arg name="y" value="-7.32"/>
+    <arg name="z" value="0.3"/>
   </include>
 
 </launch>
