@@ -1,0 +1,13 @@
+repositories:
+  joe/fusionopolis_gz_world:
+    type: git
+    url: git@github.com:ros-simulator-lab/fusionopolis_gz_world.git
+    version: master
+  joe/gazebo_object_filter:
+    type: git
+    url: git@github.com:ros-simulator-lab/gazebo_object_filter.git
+    version: master
+  joe/p3dx:
+    type: git
+    url: git@github.com:ros-simulator-lab/p3dx.git
+    version: joe_dev
