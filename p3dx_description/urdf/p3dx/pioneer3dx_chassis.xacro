@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:macro name="pioneer_chassis" params="name parent xyz rpy meshes">
+  <xacro:macro name="pioneer_chassis" params="name parent xyz rpy meshes robot_namespace">
 
   <!-- Chassis -->
   <joint name="${parent}_${name}_joint" type="fixed">
@@ -44,9 +44,21 @@
       <geometry name="top_geom">
         <mesh filename="${meshes}/top.stl"/>
       </geometry>
-      <material name="TopBlack">
-        <color rgba="0.038 0.038 0.038 1.0"/>
-      </material>
+      <xacro:if value="${robot_namespace == 'pioneer1'}">
+        <material name="TopGreen">
+          <color rgba="0.0 0.8 0.0 1.0"/>
+        </material>
+      </xacro:if>
+      <xacro:if value="${robot_namespace == 'pioneer2'}">
+        <material name="TopRed">
+          <color rgba="0.8 0.0 0.0 1.0"/>
+        </material>
+      </xacro:if>
+      <xacro:if value="${robot_namespace == '/'}">
+        <material name="TopBlack">
+          <color rgba="0.038 0.038 0.038 1.0"/>
+        </material>
+      </xacro:if>
     </visual>
     <collision>
     <origin xyz="0.0 0 0.0" rpy="0 0 0"/>

@@ -17,7 +17,7 @@
     <link name="${parent}"/>
 
     <!-- Chassis -->
-    <xacro:pioneer_chassis name="${name}" parent="base_link" xyz="0 0 0" rpy="0 0 0"  meshes="${meshes}"/>
+    <xacro:pioneer_chassis name="${name}" parent="base_link" xyz="0 0 0" rpy="0 0 0"  meshes="${meshes}" robot_namespace="${robot_namespace}"/>
 
     <!-- Front Sonar -->
     <xacro:pioneer_sonar name="sonar" parent="${name}" xyz="0.109 0 0.209" rpy="0 0 0"  meshes="${meshes}"/>
