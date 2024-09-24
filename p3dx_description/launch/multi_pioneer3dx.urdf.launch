@@ -1,9 +1,6 @@
 <launch>
 
-  <param name="pioneer1_description" command="$(find xacro)/xacro '$(find p3dx_description)/urdf/p3dx/pioneer3dx.xacro'
-    --inorder
-    robot_namespace:=pioneer1
-    " />
+  <include file="$(find p3dx_description)/launch/description.launch"/>
 
   <param name="pioneer2_description" command="$(find xacro)/xacro '$(find p3dx_description)/urdf/p3dx/pioneer3dx.xacro'
     --inorder
